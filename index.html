@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seonhui Kim — Policy Strategist</title>
+  <meta name="description" content="Personal site of Seonhui Kim, Deputy Director at Korea's Ministry of the Interior and Safety." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fdfdfb;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --line: #e6e3dc;
+      --accent: #1f3a5f;
+      --card: #ffffff;
+      --max: 760px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.ko { font-family: 'Noto Serif KR', 'Inter', serif; }
+    body.ko p, body.ko li, body.ko .muted, body.ko .tag,
+    body.ko nav a, body.ko .lang-toggle button { font-family: 'Noto Serif KR', sans-serif; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(253,253,251,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .container {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 16px; padding-bottom: 16px;
+    }
+    nav .brand { font-weight: 600; font-size: 15px; letter-spacing: 0.02em; }
+    nav .links { display: flex; gap: 20px; align-items: center; }
+    nav a {
+      color: var(--muted); text-decoration: none; font-size: 14px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+    .lang-toggle {
+      display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden;
+    }
+    .lang-toggle button {
+      border: 0; background: transparent; padding: 4px 12px;
+      font-size: 12px; color: var(--muted); cursor: pointer;
+      font-family: inherit; font-weight: 500;
+    }
+    .lang-toggle button.active { background: var(--text); color: #fff; }
+
+    /* Hero */
+    .hero { padding: 96px 0 64px; }
+    .photo-placeholder {
+      width: 96px; height: 96px; border-radius: 50%;
+      background: linear-gradient(135deg, #e6e3dc, #cfcbc1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 13px; font-weight: 500;
+      margin-bottom: 28px;
+      border: 1px solid var(--line);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px; font-weight: 500; letter-spacing: -0.01em;
+      margin-bottom: 8px; line-height: 1.15;
+    }
+    body.ko .hero h1 { font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 40px; }
+    .hero .tagline { color: var(--muted); font-size: 17px; margin-bottom: 6px; }
+    .hero .role { color: var(--text); font-size: 15px; margin-bottom: 4px; }
+    .hero .location { color: var(--muted); font-size: 14px; }
+
+    /* CTA buttons */
+    .cta-row {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 28px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 16px;
+      font-size: 14px; font-weight: 500;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: all 0.18s ease;
+      font-family: inherit;
+      line-height: 1;
+    }
+    .btn-primary {
+      background: var(--text); color: #fff;
+      border: 1px solid var(--text);
+    }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--line);
+    }
+    .btn-outline:hover { border-color: var(--text); background: var(--card); }
+    .btn .arrow { font-size: 12px; opacity: 0.8; }
+
+    /* Section */
+    section { padding: 56px 0; border-top: 1px solid var(--line); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    body.ko h2 { font-family: 'Noto Serif KR', serif; letter-spacing: 0.1em; }
+
+    p { margin-bottom: 16px; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+
+    /* Values */
+    .values { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .tag {
+      font-size: 13px; padding: 6px 14px;
+      border: 1px solid var(--line); border-radius: 999px;
+      color: var(--text); background: var(--card);
+    }
+
+    /* Projects */
+    .project {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .project:last-child { border-bottom: 0; }
+    .project h3 {
+      font-size: 17px; font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .project .meta {
+      font-size: 13px; color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .project p { font-size: 15px; color: var(--text); margin-bottom: 10px; }
+    .project .links { display: flex; gap: 14px; flex-wrap: wrap; }
+    .project .links a {
+      font-size: 13px; color: var(--accent);
+      text-decoration: none; border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+    }
+    .project .links a:hover { opacity: 0.7; }
+
+    .placeholder-text { color: var(--muted); font-style: italic; }
+
+    /* Contact */
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .contact-list li {
+      display: flex; gap: 16px; align-items: baseline;
+      font-size: 15px;
+    }
+    .contact-list .label {
+      color: var(--muted); font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      min-width: 80px;
+    }
+    .contact-list a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+    .contact-list a:hover { border-bottom-color: currentColor; }
+
+    /* Footer */
+    footer {
+      padding: 40px 0 60px; border-top: 1px solid var(--line);
+      text-align: center; color: var(--muted); font-size: 13px;
+    }
+
+    /* Language visibility */
+    .en-only { display: block; }
+    .ko-only { display: none; }
+    body.ko .en-only { display: none; }
+    body.ko .ko-only { display: block; }
+    span.en-only, span.ko-only { display: inline; }
+    body.ko span.en-only { display: none; }
+    body:not(.ko) span.ko-only { display: none; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 64px 0 48px; }
+      .hero h1 { font-size: 34px; }
+      body.ko .hero h1 { font-size: 30px; }
+      section { padding: 44px 0; }
+      nav .links { gap: 14px; }
+      nav a { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="brand">Seonhui Kim</div>
+      <div class="links">
+        <a href="#about"><span class="en-only">About</span><span class="ko-only">소개</span></a>
+        <a href="#professional"><span class="en-only">Work</span><span class="ko-only">업무</span></a>
+        <a href="#personal"><span class="en-only">Personal</span><span class="ko-only">개인 프로젝트</span></a>
+        <a href="#contact"><span class="en-only">Contact</span><span class="ko-only">연락처</span></a>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+          <button id="btn-ko" onclick="setLang('ko')">KO</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="photo-placeholder">Photo</div>
+      <h1>
+        <span class="en-only">Seonhui Kim</span>
+        <span class="ko-only">김선희</span>
+      </h1>
+      <p class="tagline">
+        <span class="en-only">Policy Strategist</span>
+        <span class="ko-only">정책 전략가</span>
+      </p>
+      <p class="role">
+        <span class="en-only">Deputy Director, Ministry of the Interior and Safety, Republic of Korea</span>
+        <span class="ko-only">행정안전부 사무관</span>
+      </p>
+      <p class="location">
+        <span class="en-only">Seoul, Korea</span>
+        <span class="ko-only">대한민국 서울</span>
+      </p>
+
+      <div class="cta-row">
+        <a href="Seonhui_Kim_CV.pdf" class="btn btn-primary" download>
+          <span class="en-only">Download CV</span>
+          <span class="ko-only">이력서 다운로드</span>
+        </a>
+        <a href="mailto:your@email.com" class="btn btn-outline">your@email.com</a>
+        <a href="https://github.com/your-handle" class="btn btn-outline" target="_blank" rel="noopener">
+          GitHub <span class="arrow">↗</span>
+        </a>
+        <a href="https://linkedin.com/in/your-handle" class="btn btn-outline" target="_blank" rel="noopener">
+          LinkedIn <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2><span class="en-only">About</span><span class="ko-only">소개</span></h2>
+
+      <div class="en-only">
+        <p>I'm a central government official with 5+ years leading digital public service reform and public sector innovation in Korea. My work sits at the intersection of policy, technology, and citizen experience — translating emerging tools into systems people actually use.</p>
+        <p>I designed and launched Korea's national mobile ID system from policy concept through public rollout — now used by 2.5M+ citizens — and have led work on AI governance, regional currency infrastructure, and local fiscal reform. I studied Mechanical Engineering at KAIST and continue to learn at the edges of AI and policy.</p>
+      </div>
+      <div class="ko-only">
+        <p>저는 지난 5년 이상 대한민국 중앙정부에서 디지털 공공서비스 혁신과 공공부문 개혁을 이끌어온 정책 실무자입니다. 정책·기술·시민 경험의 교차점에서, 새로운 기술을 실제로 시민이 사용하는 시스템으로 구현하는 일을 해왔습니다.</p>
+        <p>모바일 신분증 정책 설계부터 법령 제정, 전국 서비스 개시까지 주도하여 250만 명 이상의 국민이 이용하는 국가 서비스로 성장시켰으며, 이후 AI 거버넌스, 지역화폐, 지방재정 개혁 등 다양한 분야에서 일하고 있습니다. KAIST 기계공학과를 졸업했고, AI와 정책의 경계에서 계속 배우고 있습니다.</p>
+      </div>
+
+      <h2 style="margin-top: 40px;"><span class="en-only">Values I pursue</span><span class="ko-only">지향하는 가치</span></h2>
+      <div class="values">
+        <!-- TODO: edit these to reflect your own wording -->
+        <span class="tag"><span class="en-only">Citizen-centered impact</span><span class="ko-only">시민 중심의 변화</span></span>
+        <span class="tag"><span class="en-only">Evidence over opinion</span><span class="ko-only">근거 기반 판단</span></span>
+        <span class="tag"><span class="en-only">Build to last</span><span class="ko-only">지속 가능한 설계</span></span>
+        <span class="tag"><span class="en-only">Learn in the open</span><span class="ko-only">열린 자세의 학습</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL PROJECTS -->
+  <section id="professional">
+    <div class="container">
+      <h2><span class="en-only">Professional Outcomes</span><span class="ko-only">주요 성과</span></h2>
+
+      <!-- Seeded example from CV — edit freely -->
+      <article class="project">
+        <h3>
+          <span class="en-only">Korea National Mobile ID System</span>
+          <span class="ko-only">대한민국 모바일 신분증</span>
+        </h3>
+        <div class="meta">
+          <span class="en-only">2021–2024 · Ministry of the Interior and Safety · App / Policy</span>
+          <span class="ko-only">2021–2024 · 행정안전부 · 앱 / 정책</span>
+        </div>
+        <p>
+          <span class="en-only">Designed and delivered Korea's national mobile ID from policy concept through public rollout. Scaled to 2.5M+ users, enacted 3+ foundational laws, secured ~USD 40M in budget, and partnered with Samsung, Naver, and Kakao to integrate it into widely-used civilian apps.</span>
+          <span class="ko-only">정책 기획과 입법부터 전국 서비스 개시까지 주도. 250만 명 이상 이용, 3건 이상의 법률 제정, 약 500억 원 예산 확보. 삼성·네이버·카카오와 협력하여 민간 앱에 공공 신원확인을 통합.</span>
+        </p>
+        <div class="links">
+          <a href="#"><span class="en-only">Official site →</span><span class="ko-only">공식 사이트 →</span></a>
+          <a href="#"><span class="en-only">Press release →</span><span class="ko-only">보도자료 →</span></a>
+        </div>
+      </article>
+
+      <article class="project">
+        <h3>
+          <span class="en-only">Regional Currency Programme</span>
+          <span class="ko-only">지역사랑상품권 (지역화폐) 사업</span>
+        </h3>
+        <div class="meta">
+          <span class="en-only">2025–Present · Team Lead · KRW 1.15T subsidy</span>
+          <span class="ko-only">2025–현재 · 팀장 · 1조 1,500억 원 규모</span>
+        </div>
+        <p>
+          <span class="en-only">Lead a ~USD 870M subsidy programme delivering local-currency discounts to citizens nationwide. Initiating standardisation of transaction and merchant data across municipalities and private operators into a unified national platform.</span>
+          <span class="ko-only">전국민 대상의 약 1조 1,500억 원 규모 지역화폐 할인 사업을 이끌고 있습니다. 지자체와 민간 운영사의 거래·가맹점 데이터를 통합 국가 플랫폼으로 표준화하는 작업을 추진 중입니다.</span>
+        </p>
+        <div class="links">
+          <a href="#"><span class="en-only">Programme page →</span><span class="ko-only">사업 소개 →</span></a>
+          <a href="#"><span class="en-only">Press release →</span><span class="ko-only">보도자료 →</span></a>
+        </div>
+      </article>
+
+      <article class="project">
+        <h3>
+          <span class="en-only">Generative AI Policy Report (Government-wide)</span>
+          <span class="ko-only">정부 차원 생성형 AI 정책 보고서</span>
+        </h3>
+        <div class="meta">
+          <span class="en-only">2025 · Future Policy Innovators Fellowship · Report / Lectures</span>
+          <span class="ko-only">2025 · 미래정책혁신가 과정 · 보고서 / 강연</span>
+        </div>
+        <p>
+          <span class="en-only">Authored government-wide report on generative AI risks and deployment frameworks; delivered lectures to 1,500+ civil servants, including directors-general.</span>
+          <span class="ko-only">생성형 AI의 위험과 도입 프레임워크에 관한 정부 차원의 보고서를 집필하고, 국장급을 포함해 1,500명 이상의 공무원을 대상으로 강연을 진행했습니다.</span>
+        </p>
+        <div class="links">
+          <a href="#"><span class="en-only">Summary →</span><span class="ko-only">요약본 →</span></a>
+        </div>
+      </article>
+
+      <!-- Empty template block — duplicate as needed -->
+      <article class="project">
+        <h3>
+          <span class="en-only">[Project / Outcome name]</span>
+          <span class="ko-only">[프로젝트 / 성과 이름]</span>
+        </h3>
+        <div class="meta">
+          <span class="en-only">[Year] · [Role / Org] · [Type — Website / App / Press / Campaign]</span>
+          <span class="ko-only">[연도] · [역할 / 기관] · [유형 — 웹사이트 / 앱 / 보도자료 / 캠페인]</span>
+        </div>
+        <p class="placeholder-text">
+          <span class="en-only">One-line description of your role and the impact (numbers if possible).</span>
+          <span class="ko-only">담당 업무와 성과(가능하면 수치 포함)를 한 줄로 설명.</span>
+        </p>
+        <div class="links">
+          <a href="#"><span class="en-only">Website →</span><span class="ko-only">웹사이트 →</span></a>
+          <a href="#"><span class="en-only">Press release →</span><span class="ko-only">보도자료 →</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PERSONAL PROJECTS -->
+  <section id="personal">
+    <div class="container">
+      <h2><span class="en-only">Personal Projects</span><span class="ko-only">개인 프로젝트</span></h2>
+
+      <!-- TEMPLATE: duplicate the block below for each personal project. -->
+      <article class="project">
+        <h3>
+          <span class="en-only">[Project name]</span>
+          <span class="ko-only">[프로젝트 이름]</span>
+        </h3>
+        <div class="meta">
+          <span class="en-only">[Year] · [Type — e.g., Side project / Study / Prototype]</span>
+          <span class="ko-only">[연도] · [유형 — 예: 사이드 프로젝트 / 학습 / 프로토타입]</span>
+        </div>
+        <p class="placeholder-text">
+          <span class="en-only">One-line description of what it is and why you built it. What did you learn or make?</span>
+          <span class="ko-only">무엇을 만들었고 왜 시작했는지 한 줄 설명. 어떤 것을 배우고 만들었는지.</span>
+        </p>
+        <div class="links">
+          <a href="#"><span class="en-only">GitHub →</span><span class="ko-only">깃허브 →</span></a>
+          <a href="#"><span class="en-only">Live demo →</span><span class="ko-only">데모 →</span></a>
+        </div>
+      </article>
+
+      <article class="project">
+        <h3>
+          <span class="en-only">[Project name]</span>
+          <span class="ko-only">[프로젝트 이름]</span>
+        </h3>
+        <div class="meta">
+          <span class="en-only">[Year] · [Type]</span>
+          <span class="ko-only">[연도] · [유형]</span>
+        </div>
+        <p class="placeholder-text">
+          <span class="en-only">Short description.</span>
+          <span class="ko-only">간단한 설명.</span>
+        </p>
+        <div class="links">
+          <a href="#"><span class="en-only">Link →</span><span class="ko-only">링크 →</span></a>
+        </div>
+      </article>
+
+      <article class="project">
+        <h3>
+          <span class="en-only">[Project name]</span>
+          <span class="ko-only">[프로젝트 이름]</span>
+        </h3>
+        <div class="meta">
+          <span class="en-only">[Year] · [Type]</span>
+          <span class="ko-only">[연도] · [유형]</span>
+        </div>
+        <p class="placeholder-text">
+          <span class="en-only">Short description.</span>
+          <span class="ko-only">간단한 설명.</span>
+        </p>
+        <div class="links">
+          <a href="#"><span class="en-only">Link →</span><span class="ko-only">링크 →</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2><span class="en-only">Contact</span><span class="ko-only">연락처</span></h2>
+      <ul class="contact-list">
+        <li>
+          <span class="label">Email</span>
+          <a href="mailto:your@email.com">your@email.com</a>
+        </li>
+        <li>
+          <span class="label">LinkedIn</span>
+          <a href="#">linkedin.com/in/your-handle</a>
+        </li>
+        <li>
+          <span class="label">GitHub</span>
+          <a href="#">github.com/your-handle</a>
+        </li>
+        <li>
+          <span class="label"><span class="en-only">Other</span><span class="ko-only">기타</span></span>
+          <a href="#">[link]</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span class="en-only">© 2026 Seonhui Kim · Built with GitHub Pages</span>
+      <span class="ko-only">© 2026 김선희 · GitHub Pages로 제작</span>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.classList.toggle('ko', lang === 'ko');
+      document.documentElement.lang = lang;
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+    // Restore on load
+    (function () {
+      try {
+        var saved = localStorage.getItem('lang');
+        if (saved === 'ko') setLang('ko');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>
